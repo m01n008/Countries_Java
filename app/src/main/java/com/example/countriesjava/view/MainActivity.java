@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListViewModel viewModel;
     private RecyclerView countryRecyclerView;
-    private List<CountryPojo> countryList = new ArrayList<CountryPojo>();
+    private List<CountryPojo> countryList = new ArrayList<>();
 
 
 
