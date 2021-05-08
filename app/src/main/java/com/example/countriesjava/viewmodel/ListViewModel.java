@@ -13,11 +13,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ListViewModel extends ViewModel {
 
-   private CountryService countryService = new CountryService();
-   private Observable<List<CountryPojo>> countryList = countryService.getCountries()
-           .toObservable()
-           .subscribeOn(Schedulers.io())
-           .observeOn(AndroidSchedulers.mainThread());
+    private CountryService countryService = new CountryService();
+    private Observable<List<CountryPojo>> countryList = countryService.getCountries()
+            .toObservable()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
 
 
     public Observable<List<CountryPojo>> getCountryList() {

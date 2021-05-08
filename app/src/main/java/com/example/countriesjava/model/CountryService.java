@@ -12,6 +12,7 @@ public class CountryService {
     String BASE_URL = "https://raw.githubusercontent.com";
 
     private CountryAPI api;
+
     {
         api = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -20,7 +21,7 @@ public class CountryService {
                 .build().create(CountryAPI.class);
     }
 
-    public Single<List<CountryPojo>> getCountries(){
+    public Single<List<CountryPojo>> getCountries() {
         return api.getCountries();
     }
 }

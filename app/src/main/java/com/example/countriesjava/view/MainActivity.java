@@ -18,17 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
-import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListViewModel viewModel;
     private RecyclerView countryRecyclerView;
     private List<CountryPojo> countryList = new ArrayList<>();
-
 
 
     @Override
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void ObserveModel(){
+    private void ObserveModel() {
 
         viewModel.getCountryList().subscribe(new Observer<List<CountryPojo>>() {
             @Override
@@ -55,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onNext(List<CountryPojo> value) {
-               countryList = value;
+                countryList = value;
 
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.e("onError:",e.toString());
+                Log.e("onError:", e.toString());
             }
 
             @Override
@@ -70,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 countryRecyclerView.setAdapter(new CountryListAdapter(countryList));
             }
         });
-
 
 
     }
