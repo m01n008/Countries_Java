@@ -1,7 +1,10 @@
 package com.example.countriesjava.view;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,13 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observer;
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListViewModel viewModel;
     private RecyclerView countryRecyclerView;
-    private List<CountryPojo> countryPojoList = new ArrayList<CountryPojo>();
+    private List<CountryPojo> countryList = new ArrayList<CountryPojo>();
+
 
 
     @Override
@@ -32,31 +39,38 @@ public class MainActivity extends AppCompatActivity {
         bindViews();
         bindObjects();
 
-        viewModel.refresh();
+        ObserveModel();
 
-        viewModel.getCountryPojoObservable().subscribe(new Observer<CountryPojo>() {
+
+    }
+
+    private void ObserveModel(){
+
+        viewModel.getCountryList().subscribe(new Observer<List<CountryPojo>>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
-            public void onNext(CountryPojo value) {
-                countryPojoList.add(value);
+            public void onNext(List<CountryPojo> value) {
+               countryList = value;
 
             }
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("onError:",e.toString());
             }
 
             @Override
             public void onComplete() {
                 countryRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-                countryRecyclerView.setAdapter(new CountryListAdapter(countryPojoList));
+                countryRecyclerView.setAdapter(new CountryListAdapter(countryList));
             }
         });
+
 
 
     }

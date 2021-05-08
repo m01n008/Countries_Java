@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 public interface CountryAPI {
 
     @GET("devtides/countries/master/countriesV2.json")
-    public Single<List<CountryPojo>> getCountries();
+     Single<List<CountryPojo>> getCountries();
 
 }
