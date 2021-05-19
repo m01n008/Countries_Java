@@ -1,6 +1,10 @@
 package com.example.countriesjava.model;
 
+import com.example.countriesjava.di.DaggerAPIComponent;
+
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.Single;
 import retrofit2.Retrofit;
@@ -9,16 +13,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountryService {
 
-    String BASE_URL = "https://raw.githubusercontent.com";
 
-    private CountryAPI api;
-
+    @Inject
+    CountryAPI api;
     {
-        api = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build().create(CountryAPI.class);
+        DaggerAPIComponent.builder().build().inject(this);
     }
 
     public Single<List<CountryPojo>> getCountries() {
