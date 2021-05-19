@@ -23,6 +23,7 @@ public class ListViewModel extends ViewModel {
     public Observable<List<CountryPojo>> getCountryList() {
         return countryList;
     }
+
 }
 
 

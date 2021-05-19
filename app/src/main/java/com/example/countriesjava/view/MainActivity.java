@@ -19,6 +19,7 @@ import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import retrofit2.Call;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         bindObjects();
 
         ObserveModel();
+        consumeAPI();
+
+    }
+
+    private void consumeAPI(){
 
 
     }

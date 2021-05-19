@@ -1,5 +1,6 @@
 package com.example.countriesjava.model;
 
+
 import com.example.countriesjava.di.DaggerAPIComponent;
 
 import java.util.List;
@@ -13,12 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountryService {
 
-
     @Inject
     CountryAPI api;
     {
         DaggerAPIComponent.builder().build().inject(this);
     }
+
 
     public Single<List<CountryPojo>> getCountries() {
         return api.getCountries();
