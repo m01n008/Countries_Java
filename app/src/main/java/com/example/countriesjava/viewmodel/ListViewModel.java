@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.countriesjava.model.CountryPojo;
 import com.example.countriesjava.model.CountryService;
+import com.example.countriesjava.util.Notification;
+import com.google.firebase.iid.internal.FirebaseInstanceIdInternal;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
 
@@ -23,6 +26,12 @@ public class ListViewModel extends ViewModel {
     public Observable<List<CountryPojo>> getCountryList() {
         return countryList;
     }
+
+
+
+
+
+
 
 }
 

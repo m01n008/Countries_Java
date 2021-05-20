@@ -1,6 +1,9 @@
 package com.example.countriesjava.util;
 
 import android.content.Context;
+import android.util.Log;
+
+import androidx.lifecycle.ViewModel;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -16,8 +19,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Notification {
+    private static Notification notification = new Notification();
+
+    private Notification(){}
+
+    public static Notification getNotificationInstance(){
+
+        if(notification  == null){
+            notification = new Notification();
+        }
+       return notification;
+
+    }
 
     public void SendNotification(String Token, String Title, String Body, Context context) {
+
+        Log.i("--notitoken ",Token);
 
         String url = "https://fcm.googleapis.com/fcm/send";
         String API_KEY = "AAAAkeZp-9Q:APA91bHOV7prxg8k8MWw4cVCHcyRzYp9iSXK3OPKTwPmVCeMWqunSwVEAyzlkZw1nThOZCl-athImM3raywOBZFM6qrv5sY9xFOKuZOVLUclArP6sBv66t9GYNQ8xhY7HThIPGmrMuaC";
@@ -54,16 +71,17 @@ public class Notification {
                 }
             }) {
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    HashMap hashMap = new HashMap();
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap headers = new HashMap();
 
-                    hashMap.put("Authorization", "key=" + API_KEY);
-                    hashMap.put("Content-TYpe", "application-json");
+                    headers.put("Authorization", "key=" + API_KEY);
+                    headers.put("Content-Type", "application/json");
 
-                    return hashMap;
+                    return headers;
 
                 }
             };
+
 
             requestQueue.add(jsonObjectRequest);
 
