@@ -36,6 +36,12 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
         holder.Name.setText(countryList.get(position).getName());
         holder.Capital.setText(countryList.get(position).getCapital());
+        holder.Name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 

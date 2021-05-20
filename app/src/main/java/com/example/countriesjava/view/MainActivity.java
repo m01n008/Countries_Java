@@ -37,14 +37,10 @@ public class MainActivity extends AppCompatActivity {
         bindObjects();
 
         ObserveModel();
-        consumeAPI();
 
     }
 
-    private void consumeAPI(){
 
-
-    }
 
     private void ObserveModel() {
 
