@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         bindObjects();
 
-        getNotifyToken();
+       // getNotifyToken();
 
         ObserveModel();
 
@@ -52,16 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getNotifyToken() {
-
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<String> task) {
-                token = task.getResult();
-                Log.i("--notitoken ",token);
-            }
-        });
-    }
+//    private void getNotifyToken() {
+//
+//        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+//            @Override
+//            public void onComplete(@NonNull @NotNull Task<String> task) {
+//                token = task.getResult();
+//                Log.i("--notitoken ",token);
+//            }
+//        });
+//    }
 
 
     private void ObserveModel() {

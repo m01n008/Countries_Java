@@ -29,8 +29,8 @@ public class myFireBaseMessagingService extends FirebaseMessagingService {
         String channelID = "com.example.countriesjava";
         NotificationCompat.Builder mbuilder = new NotificationCompat.Builder(this, channelID);
         mbuilder.setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle(remoteMessage.getNotification().getTitle())
-                .setContentText(remoteMessage.getNotification().getBody())
+                .setContentTitle(remoteMessage.getNotification().getBody())
+                .setContentText(remoteMessage.getData().toString())
                 .setPriority(NotificationCompat.PRIORITY_MAX);
 
         NotificationManager notificationManager =(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
